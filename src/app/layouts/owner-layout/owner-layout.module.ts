@@ -14,7 +14,7 @@ import { RoomDialogComponent } from './dialogs/RoomDialog/RoomDialog.component';
     SharedModule,
     RouterModule.forChild(OwnerLayoutRoutes),
   ],
-  declarations: [OwnerLayoutComponent,
+  declarations: [
     RoomComponent,
     RoomDialogComponent
   ]

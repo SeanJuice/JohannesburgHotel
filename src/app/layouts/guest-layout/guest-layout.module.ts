@@ -25,7 +25,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     DemoMaterialModule
   ],
 
-    declarations: [GuestLayoutComponent, BookingComponent,UserProfileComponent,],
+    declarations: [BookingComponent,UserProfileComponent,],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-za' }]
 })
 export class GuestLayoutModule { }
