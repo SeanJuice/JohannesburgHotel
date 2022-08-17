@@ -7,7 +7,6 @@ import { RoomComponent } from "../owner-layout/pages/room/room.component";
 import { AdminDashboardComponent } from "./AdminDashboard/AdminDashboard.component";
 import { CentreComponent } from "./centre/centre.component";
 import { CourseComponent } from "./course/course.component";
-import { LearnersComponent } from "./learners/learners.component";
 import { NotificationsComponent } from "./notifications/notifications.component";
 import { RegisteredLearnersComponent } from "./registered-learners/registered-learners.component";
 import { SubjectComponent } from "./subject/subject.component";
@@ -28,15 +27,6 @@ export const AdminLayoutRoutes: Routes = [
       {
         path: "notifications",
         component: NotificationsComponent,
-      },
-    ],
-  },
-  {
-    path: "",
-    children: [
-      {
-        path: "learners",
-        component: LearnersComponent,
       },
     ],
   },

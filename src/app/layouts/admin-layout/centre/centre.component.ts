@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
-import { CourseService } from 'app/layouts/learner-layout/services/course.service';
 import Swal from 'sweetalert2'
 import { CentreDialogComponent } from '../diallogs/centre-dialog/centre-dialog.component';
 import { CentreService } from '../services/centre.service';
@@ -15,17 +14,14 @@ export class CentreComponent implements OnInit {
   centres: any[] = [];
   public query: any = '';
 
-  constructor(private coursesService: CourseService,public dialog: MatDialog, private centreService: CentreService) { }
+  constructor(public dialog: MatDialog, private centreService: CentreService) { }
 
   ngOnInit() {
     this.getCentres();
   }
 
   getCentres() {
-    this.coursesService.getCentres().subscribe(result => {
-        this.centres =  result;
-        console.log(this.centres)
-    })
+
   }
 
   RemoveCourse(CentreId) {
