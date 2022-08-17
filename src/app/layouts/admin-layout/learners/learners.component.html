@@ -1,0 +1,101 @@
+<div style="padding-top:5%">
+  <!-- <img src="./assets/logo-only.png" alt="Hello" class="img"> -->
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-icon mat-card-avatar>people</mat-icon>
+    <mat-card-title>Registered Learners</mat-card-title>
+    <mat-card-subtitle>Select the parameters to filter the learners</mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="row">
+      <div class="col">
+        <div>
+          <mat-form-field  class="m-2">
+            <mat-label>Learners according</mat-label>
+            <mat-select [(ngModel)]="selectedoption" (selectionChange)="onSelect($event)">
+              <mat-option *ngFor="let item of options"  [value]="item.id">
+                {{item.value}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+       </div>
+      <div class="col">
+       <mat-form-field class="m-2">
+           <mat-label>Select </mat-label>
+           <mat-select [(ngModel)]="selectedcentre">
+               <mat-option>None</mat-option>
+               <div *ngIf="selectedoption == 0; else alt">
+                <mat-option *ngFor="let option of ViewList"  [value]="option.CentreId">
+                  {{option.CentreName}}
+              </mat-option>
+              </div>
+
+              <ng-template #alt>
+                <mat-option *ngFor="let option of ViewList"  [value]="option.CourseId">
+                  {{option.CourseDesc}}
+              </mat-option>
+              </ng-template>
+           </mat-select>
+       </mat-form-field>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+      <button mat-stroked-button (click)="filter(selectedoption,selectedcentre)">View</button>
+      <button mat-raised-button  color="warn" routerLink="/dashboard" >Cancel</button>
+    </div>
+  </mat-card-actions>
+</mat-card>
+</div>
+
+<div>
+
+<div class="main-content">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class=" text-primary">
+                                <th>
+                                  FirstName
+                                </th>
+                                <th>
+                                  Surname
+                                </th>
+                                <th>
+                                  UserType
+                                </th>
+
+                            </thead>
+                            <tbody>
+
+                                <tr *ngFor="let user  of users" >
+                                  <td>
+                                    {{user.FirstName}}
+                                  </td>
+                                  <td >
+                                    {{user.Surname}}
+
+                                  </td>
+                                    <td >
+                                      {{user.UserTypeId}}
+                                  </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
