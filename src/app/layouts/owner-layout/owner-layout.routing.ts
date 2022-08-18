@@ -8,7 +8,7 @@ export const  OwnerLayoutRoutes: Routes = [
     path: "",
     children: [
       {
-        path: "rooms-management",
+        path: "manage-rooms",
         component: RoomComponent,
       },
     ],
