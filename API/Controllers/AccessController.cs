@@ -16,7 +16,7 @@ using RouteAttribute = System.Web.Http.RouteAttribute;
 
 namespace API.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AccessController : ApiController
     {
         UCTEntities db = new UCTEntities();
