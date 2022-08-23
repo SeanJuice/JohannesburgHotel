@@ -10,7 +10,7 @@ namespace API.ViewModel
         public string Username { get; set; }
 
         public List<Room> BookedRooms { get; set; }
-
+        public List<Amenity> amenities { get; set; }
 
     }
 }

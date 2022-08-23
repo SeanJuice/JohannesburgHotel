@@ -154,9 +154,11 @@ namespace API.Controllers
                 User user = db.Users.Where(x => x.id == id).FirstOrDefault();
                 List<int> userBookedRoomIdss = db.Room_Booking.Where(u => u.userId == id).Select(z => z.roomId).ToList();
                 List<Room> roomList = new List<Room>();
+                List<Amenity> amenitiesList = new List<Amenity>();
                 foreach (int roomId in userBookedRoomIdss)
                 {
                     Room room = db.Rooms.Where(x => x.id == roomId).FirstOrDefault();
+                    amenitiesList = db.RoomTypeAmenities.Where(x => x.roomTypeId == room.typeId).Select(s => s.Amenity).ToList(); ;
                     roomList.Add(room);
                 }
                 UserViewModel userView = new UserViewModel
@@ -165,6 +167,7 @@ namespace API.Controllers
                     Surname = user.Surname,
                     BookedRooms = roomList,
                     Username = user.Username,
+                    amenities = amenitiesList,
                 };
 
                 return userView;

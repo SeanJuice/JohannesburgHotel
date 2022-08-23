@@ -29,36 +29,35 @@
                               </mat-form-field>
                             </div>
                         </div>
-                          <!-- <div class="row">
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="City" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Country" type="text">
-                                </mat-form-field>
-                              </div>
-                              <div class="col-md-4">
-                                <mat-form-field class="example-full-width">
-                                  <input matInput placeholder="Postal Code" type="text">
-                                </mat-form-field>
-                              </div>
-                          </div>
-                          <div class="row">
-                              <div class="col-md-12">
-                                <label>About Me</label>
-                                <mat-form-field class="example-full-width">
-                                   <textarea matInput placeholder="Lamborghini Mercy, Your chick she so thirsty, I'm in that two seat Lambo."></textarea>
-                                 </mat-form-field>
 
-                              </div>
-                          </div> -->
                           <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
                           <div class="clearfix"></div>
                       </form>
                   </div>
+              </div>
+              <div class="card" *ngFor="let room of roomsAvailable">
+                <div class="card-header card-header-primary">
+                  <h4 class="card-title">{{room.roomName}}</h4>
+                  <p class="card-category">
+                    <i class="material-icons text-danger">house</i>
+                    <a href="#pablo">Room no: {{room.roomNumber}}</a>
+                  </p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Amenities
+                  </h5>
+                  <ul *ngFor="let amenity of room.amenities ">
+                    <li>{{amenity.Name}}</li>
+                  </ul>
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <mat-chip color="primary" selected style="font-size: 16px; font-weight: bold;">Booked</mat-chip>
+                  </div>
+
+                  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button mat-raised-button color="danger"  (click)="Book(room.id)" class="btn orange">Cancel Booking</button>
+                </div>
+                </div>
+
               </div>
           </div>
           <div class="col-md-4">

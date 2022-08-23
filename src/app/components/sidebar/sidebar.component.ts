@@ -14,9 +14,7 @@ export const ROUTES: RouteInfo[] = [
 
 
 
-    // { path: '/admin/manage-rooms', title: 'Manage Rooms',  icon:'notifications', class: '' ,role: 1},
-    // { path: '/admin/book-room', title: 'Book Room',  icon:'notifications', class: '' ,role: 1},
-    // { path: '/admin/userprofile', title: 'User Profile',  icon:'notifications', class: '' ,role: 1},
+
 
     // @owner
     { path: '/owner/dashboard', title: 'Dashboard',  icon:'notifications', class: '' ,role: 1},
@@ -25,6 +23,18 @@ export const ROUTES: RouteInfo[] = [
     // @Guest
     { path: '/guest/book-room', title: 'Book Room',  icon:'notifications', class: '' ,role: 2},
     { path: '/guest/userprofile', title: 'User Profile',  icon:'notifications', class: '' ,role: 2},
+
+     // @Clerk
+     { path: '/clerk/check-in', title: 'Check in',  icon:'notifications', class: '' ,role: 3},
+
+     // @Manager
+
+     { path: '/manager/manage-booking', title: 'Manage Booking',  icon:'notifications', class: '' ,role: 4},
+     { path: '/manager/room-popularity', title: 'View Room Popularity',  icon:'notifications', class: '' ,role: 4},
+     { path: '/manager/room-availability', title: 'View Room Availability',  icon:'notifications', class: '' ,role: 4},
+     { path: '/manager/season-popularity', title: 'View Season Popularity',  icon:'notifications', class: '' ,role: 4},
+
+
 ];
 
 @Component({

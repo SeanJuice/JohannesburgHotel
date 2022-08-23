@@ -12,7 +12,9 @@ import { ToastrService } from 'app/services/Toastr.service';
 export class UserProfileComponent implements OnInit {
 
   profileModel: FormGroup;
-  userTypes: any[] =[];
+  userTypes: unknown[] =[];
+  roomsAvailable: unknown[] =[];
+
   constructor(private auth: AuthService, private roomService: RoomService, private fb: FormBuilder, private toastr: ToastrService) { }
 
   ngOnInit() {
@@ -39,7 +41,7 @@ export class UserProfileComponent implements OnInit {
   getProfile(id: number) {
     this.roomService.getProfile(id).subscribe((profile:any) => {
       console.log(profile);
-
+      this.roomsAvailable = profile.BookedRooms
       this.profileModel.patchValue({
         Username: profile.Username,
         FirstName: profile.FirstName,
