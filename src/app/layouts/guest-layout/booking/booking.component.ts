@@ -3,7 +3,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MatSelect } from '@angular/material/select';
 import { AuthService } from 'app/auth/auth.service';
-import { RoomService } from 'app/layouts/owner-layout/services/room.service';
+import { RoomService } from 'app/services/room.service';
 import { BehaviorSubject, ReplaySubject, Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import Swal from 'sweetalert2';

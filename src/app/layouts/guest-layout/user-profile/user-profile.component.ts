@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'app/auth/auth.service';
-import { RoomService } from 'app/layouts/owner-layout/services/room.service';
+import { RoomService } from 'app/services/room.service';
 import { ToastrService } from 'app/services/Toastr.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-profile',
@@ -36,6 +37,39 @@ export class UserProfileComponent implements OnInit {
     //   this.toastr.showNotification("successfully updated!",1);
 
     // })
+  }
+
+  Book(room) {
+
+    let book = {
+      roomId: room.roomId,
+      bookingId: room.bookId,
+    }
+    Swal.fire({
+      title: 'Are you sure you want to cancel the booking?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#ff0000',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, book it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+
+        this.roomService.cancelBooking(book).subscribe((result) => {
+          Swal.fire(
+            'Booked!',
+            'Room successfully cancelled.',
+            'success'
+          )
+          const id =  this.auth.getUserID;
+          this.getProfile(id);
+
+        }, error => {
+
+        })
+
+      }
+    })
   }
 
   getProfile(id: number) {

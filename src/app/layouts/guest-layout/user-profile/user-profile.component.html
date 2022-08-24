@@ -44,6 +44,9 @@
                   </p>
                 </div>
                 <div class="card-body">
+                  <span class="badge rounded-pill text-bg-warning">{{room.startDate | date}}</span> -
+                  <span class="badge rounded-pill text-bg-warning">{{room.endDate | date }}</span>
+                  <hr>
                   <h5 class="card-title">Amenities
                   </h5>
                   <ul *ngFor="let amenity of room.amenities ">
@@ -54,7 +57,7 @@
                   </div>
 
                   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button mat-raised-button color="danger"  (click)="Book(room.id)" class="btn orange">Cancel Booking</button>
+                    <button mat-raised-button color="danger"  (click)="Book(room)" class="btn orange">Cancel Booking</button>
                 </div>
                 </div>
 

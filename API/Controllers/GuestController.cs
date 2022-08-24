@@ -123,6 +123,30 @@ namespace API.Controllers
 
         }
 
+        [Route("cancelbooking")]
+        public object cancelbooking([FromBody] CancelBookingViewModel canceled)
+        {
+            try
+            {
+                Room_Booking bookedRoom = db.Room_Booking.Where(x => x.Id == canceled.bookingId).FirstOrDefault();
+                db.Room_Booking.Remove(bookedRoom);
+                var save = db.SaveChanges();
+                if (save != null)
+                {
+                    Room room = db.Rooms.Where(x => x.id == canceled.roomId).FirstOrDefault();
+                    room.availableRooms += 1;
+                    db.SaveChanges();
+                }
+                return Ok();
+
+            }
+            catch (Exception c)
+            {
+                return c;
+            }
+
+        }
+
         [HttpGet]
         [Route("GetAmenities")]
         public List<Amenity> getamenties()
@@ -147,27 +171,41 @@ namespace API.Controllers
         public UserViewModel getProfile(int id)
 
         {
+
+
             db.Configuration.ProxyCreationEnabled = false;
             List<object> list = new List<object>();
             try
             {
                 User user = db.Users.Where(x => x.id == id).FirstOrDefault();
-                List<int> userBookedRoomIdss = db.Room_Booking.Where(u => u.userId == id).Select(z => z.roomId).ToList();
-                List<Room> roomList = new List<Room>();
+                List<Room_Booking> userBookedRoomIdss = db.Room_Booking.Where(u => u.userId == id).ToList();
+                List<UserBookedRoomViewModel> roomBookedList = new List<UserBookedRoomViewModel>();
                 List<Amenity> amenitiesList = new List<Amenity>();
-                foreach (int roomId in userBookedRoomIdss)
+
+                foreach (Room_Booking booking in userBookedRoomIdss)
                 {
-                    Room room = db.Rooms.Where(x => x.id == roomId).FirstOrDefault();
-                    amenitiesList = db.RoomTypeAmenities.Where(x => x.roomTypeId == room.typeId).Select(s => s.Amenity).ToList(); ;
-                    roomList.Add(room);
+                    Room room = db.Rooms.Where(x => x.id == booking.roomId).FirstOrDefault();
+                    amenitiesList = db.RoomTypeAmenities.Where(x => x.roomTypeId == room.typeId).Select(s => s.Amenity).ToList();
+                    UserBookedRoomViewModel userbookedRoom = new UserBookedRoomViewModel
+                    {
+                        roomId = room.id,
+                        bookId = booking.Id,
+                        roomName = room.roomName,
+                        roomNumber = room.roomNumber,
+                        amenities = amenitiesList,
+                        startDate = booking.startDate,
+                        endDate = booking.endDate,
+                        status = booking.isCheckedIn
+                    };
+                    roomBookedList.Add(userbookedRoom);
                 }
+
                 UserViewModel userView = new UserViewModel
                 {
                     FirstName = user.FirstName,
                     Surname = user.Surname,
-                    BookedRooms = roomList,
+                    BookedRooms = roomBookedList,
                     Username = user.Username,
-                    amenities = amenitiesList,
                 };
 
                 return userView;

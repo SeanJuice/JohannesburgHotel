@@ -47,6 +47,10 @@ export class RoomService {
     return this.http.post('https://localhost:44318/api/booking/book', booking, httpOptions)
   }
 
+  cancelBooking(booking) {
+    const httpOptions = { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) };
+    return this.http.post('https://localhost:44318/api/booking/cancelbooking', booking, httpOptions)
+  }
   getAmenities(): Observable<any[]> {
     return this.http.get<any[]>('https://localhost:44318/api/booking/GetAmenities');
   }

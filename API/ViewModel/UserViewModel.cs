@@ -1,5 +1,4 @@
-﻿using API.Models;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace API.ViewModel
 {
@@ -9,8 +8,7 @@ namespace API.ViewModel
         public string Surname { get; set; }
         public string Username { get; set; }
 
-        public List<Room> BookedRooms { get; set; }
-        public List<Amenity> amenities { get; set; }
+        public List<UserBookedRoomViewModel> BookedRooms { get; set; }
 
     }
 }

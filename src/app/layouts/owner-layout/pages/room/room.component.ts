@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
 import { RoomDialogComponent } from '../../dialogs/RoomDialog/RoomDialog.component';
-import { RoomService } from '../../services/room.service';
+import { RoomService } from '../../../../services/room.service';
 
 @Component({
   selector: 'app-room',
