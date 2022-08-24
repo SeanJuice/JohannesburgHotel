@@ -1,56 +1,20 @@
 ﻿using API.Models;
 using System;
-using System.Collections.Generic;
-using System.Data.Entity;
-using System.Dynamic;
+using System.Data;
 using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Security.Cryptography;
-using System.Text;
 using System.Web.Http;
 using System.Web.Http.Cors;
-using System.IO;
-using System.Data;
-using System.Globalization;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using System.Configuration;
-using System.Data.SqlClient;
-using System.Runtime.Serialization;
-using System.Net.Mail;
-using System.Data.Entity.Infrastructure;
-using System.Threading.Tasks;
 using System.Web.Mvc;
+using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
 using HttpPostAttribute = System.Web.Mvc.HttpPostAttribute;
 using RouteAttribute = System.Web.Http.RouteAttribute;
-using HttpGetAttribute = System.Web.Http.HttpGetAttribute;
-using HttpDeleteAttribute = System.Web.Http.HttpDeleteAttribute;
 
 namespace API.Controllers
 {
-    [EnableCors(origins: "http://localhost:4200", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class CoursesController : ApiController
     {
         private UCTEntities db = new UCTEntities();
-
-        [HttpGet]
-        [Route("api/Courses/getCourses")]
-        public List<Cours> getCourses()
-
-        {
-            db.Configuration.ProxyCreationEnabled = false;
-            List<object> list = new List<object>();
-            try
-            {
-                List<Cours> Courses = db.Courses.ToList();
-                return Courses;
-            }
-            catch (Exception)
-            {
-                return null;
-            }
-        }
 
 
 
