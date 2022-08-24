@@ -5,7 +5,7 @@ import { BookingComponent } from "./booking/booking.component";
 import { UserProfileComponent } from "./user-profile/user-profile.component";
 
 export const  GuestLayoutRoutes: Routes = [
-
+  { path: "dashboard", component: DashboardComponent },
   { path: "book-room", component: BookingComponent },
   {
     path: '',

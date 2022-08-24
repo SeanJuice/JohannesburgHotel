@@ -50,9 +50,11 @@ export class LoginComponent implements OnInit {
 
        this.auth.setLoggedin(true);
       //  this.toastr.success('You have successfully logged in.', 'Authentication success.', {timeOut: 2222});
-       this.auth.setUserType(res.type)
+       this.auth.setUserType(res.type);
 
-       this.auth.getUserRole == 1? this.router.navigateByUrl('owner/dashboard') : this.router.navigateByUrl('guest/userprofile') ;
+       let routes  = ["dummy", 'owner/dashboard','guest/dashboard','clerk/dashboard'];
+
+       this.router.navigateByUrl(routes[this.auth.getUserRole]);
 
 
 

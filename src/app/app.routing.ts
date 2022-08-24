@@ -60,6 +60,19 @@ const routes: Routes = [
       },
     ],
   },
+  {
+    path: "clerk",
+    component: OwnerLayoutComponent,
+    children: [
+      {
+        path: "",
+        loadChildren: () =>
+          import("./layouts/clerk-layout/clerk-layout.module").then(
+            (m) => m.ClerkLayoutModule
+          ),
+      },
+    ],
+  },
 ];
 
 @NgModule({

@@ -25,9 +25,11 @@ export const ROUTES: RouteInfo[] = [
     { path: '/guest/userprofile', title: 'User Profile',  icon:'notifications', class: '' ,role: 2},
 
      // @Clerk
-     { path: '/clerk/check-in', title: 'Check in',  icon:'notifications', class: '' ,role: 3},
-
+     { path: '/clerk/dashboard', title: 'Dashboard',  icon:'notifications', class: '' ,role: 3},
+     { path: '/clerk/checkIn-process', title: 'Check In Customer',  icon:'notifications', class: '' ,role: 3},
      // @Manager
+
+     { path: '/manager/dashboard', title: 'Dashboard',  icon:'notifications', class: '' ,role: 4},
 
      { path: '/manager/manage-booking', title: 'Manage Booking',  icon:'notifications', class: '' ,role: 4},
      { path: '/manager/room-popularity', title: 'View Room Popularity',  icon:'notifications', class: '' ,role: 4},

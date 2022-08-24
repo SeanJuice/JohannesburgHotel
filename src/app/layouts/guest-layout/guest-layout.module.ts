@@ -12,6 +12,7 @@ import {MAT_DATE_LOCALE} from '@angular/material/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { DemoMaterialModule } from 'app/shared/material.module';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   imports: [
@@ -25,7 +26,7 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     DemoMaterialModule
   ],
 
-    declarations: [BookingComponent,UserProfileComponent,],
+    declarations: [BookingComponent,UserProfileComponent,DashboardComponent],
   providers: [{ provide: MAT_DATE_LOCALE, useValue: 'en-za' }]
 })
 export class GuestLayoutModule { }

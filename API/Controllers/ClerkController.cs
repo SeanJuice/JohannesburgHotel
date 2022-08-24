@@ -8,13 +8,14 @@ using System.Web.Http.Cors;
 namespace API.Controllers
 {
     [EnableCors(origins: "*", headers: "*", methods: "*")]
+    [RoutePrefix("api/clerk")]
     public class ClerkController : GuestController
     {
         private UCTEntities db = new UCTEntities();
 
 
         [HttpGet]
-        [Route("getUsersBooked")]
+        [Route("GetUsersBooked")]
         public List<UserViewModel> getUsersBooked()
 
         {
@@ -26,7 +27,8 @@ namespace API.Controllers
                 foreach (User user in Users)
                 {
                     UserViewModel userBooked = getProfile(user.id);
-                    list.Add(userBooked);
+                    if (userBooked.BookedRooms.Count() > 0)
+                        list.Add(userBooked);
                 }
                 return list;
             }
@@ -45,7 +47,7 @@ namespace API.Controllers
             {
                 Room_Booking booking = db.Room_Booking.Where(x => x.Id == id).FirstOrDefault();
                 booking.isCheckedIn = true;
-                db.Room_Booking.Add(booking);
+                /// db.Room_Booking.Add(booking);
                 db.SaveChanges();
 
                 return Ok();
@@ -59,14 +61,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        [Route("checkinOut/{id}")]
+        [Route("checkOut/{id}")]
         public object checkinOut(int id)
         {
             try
             {
                 Room_Booking booking = db.Room_Booking.Where(x => x.Id == id).FirstOrDefault();
                 booking.isCheckedIn = false;
-                db.Room_Booking.Add(booking);
+                ///db.Room_Booking.Add(booking);
                 db.SaveChanges();
 
                 return Ok();
